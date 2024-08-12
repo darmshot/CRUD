@@ -255,7 +255,8 @@ class BackpackServiceProvider extends ServiceProvider
         $this->mergeConfigsFromDirectory('operations');
 
         // add the root disk to filesystem configuration
-        app()->config['filesystems.disks.'.config('backpack.base.root_disk_name')] = [
+        app()->config['filesystems.disks.'.config('backpack.base.root_disk_name')] = app()->config['filesystems.disks.'.config('backpack.base.root_disk_name')] + 
+        [
             'driver' => 'local',
             'root' => base_path(),
         ];
